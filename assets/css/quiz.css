@@ -130,9 +130,9 @@ table {
   border-spacing: 0;
 }
 body.light-mode {
-  background: url(/assets/images/Ellipse\ 8.svg);
-  background-color: #f5f6fa;
-  color: #313e51;
+    background: url(/assets/images/Ellipse\ 8.svg);
+    background-color: #f5f6fa;
+    color: #313e51;
 }
 
 body.dark-mode {
