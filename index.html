@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/2d1d2f860d.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Frontend Quiz</title>
+    <link rel="stylesheet" href="assets/css/quiz.css" />
+    <script src="assets/js/quizData.js" defer></script>
+    <script src="assets/js/quiz.js" defer></script>
+  
+  </head>
+  <body>
+    <header>
+      <div class="header">
+        <div class="header-left">
+         <div class="img-category">
+            <img src="" alt="" />
+            <h2>Accessibility</h2>
+         </div>
+        </div>
+        <div class="header-theme">
+          <i class="fa-regular fa-sun"></i>
+          <label class="switch"
+            ><input id="toggle-theme" type="checkbox" /><span
+              class="slider round"
+            ></span
+          ></label>
+          <i class="fa-regular fa-moon"></i>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="container-welcome">
+        <div class="welcome-text">
+          <h2>Welcome to the</h2>
+          <h3>Frontend Quiz!</h3>
+          <p>Pick a subject to get started.</p>
+        </div>
+        <div class="category-section">
+            <div class="select-section">
+              <img src="assets/images/html.svg" alt="" />HTML
+            </div>
+          <div class="select-section">
+            <img src="assets/images/css.svg" alt="" />CSS
+          </div>
+          <div class="select-section">
+            <img src="assets/images/javascript.svg" alt="" />JAVASCRIPT
+          </div>
+          <div class="select-section">
+            <img src="assets/images/accessibility.svg" alt="" />Accessibility
+          </div>
+        </div>
+      </div>
+      <div class="container-questions">
+        <div class="question-section">
+          <div class="question-content">
+            <p>Question 6 of 10</p>
+            <h5>
+              Which of these color contrast ratios defines the minimum WCAG 2.1
+              Level AA requirement for normal text?
+            </h5>
+            <div class="progress-bar">
+              <div class="progress">
+              </div>
+            </div>
+          </div>
+          <div class="answer-section">
+            <div class="select-answer">
+              <button class="selectBtn">A</button>4.5 : 1
+            </div>
+            <div class="select-answer">
+              <button class="selectBtn">B</button>4.5 : 1
+            </div>
+            <div class="select-answer">
+              <button class="selectBtn">C</button>4.5 : 1
+            </div>
+            <div class="select-answer">
+              <button class="selectBtn">D</button>4.5 : 1
+            </div>
+            <button class="submit-answer">Submit Answer</button>
+          </div>
+        </div>
+      </div>
+      <div class="container-score">
+        <h4>Quiz completed</h4>
+        <h3>You scored...</h3>
+        <div class="result-screen">
+          <div class="img-category">
+            <img src="assets/images/accessibility.svg" alt="" />
+            <p>Accessibility</p>
+          </div>
+          <h1>8</h1>
+          <p>out of 10</p>
+        </div>
+        <button class="play-again">Play Again</button>
+      </div>
+    </div>
+  </body>
+</html>
