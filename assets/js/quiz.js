@@ -1,4 +1,3 @@
-
 const quizzes = [
   {
     title: "HTML",
@@ -429,22 +428,25 @@ const answerSection = document.querySelector('.answer-section');
 
 let currentQuestionIndex = 0;
 let score = 0;
+let selectedCategory = "";
 
 const categoryImages = {
   HTML: "html",
   CSS: "css",
-  JavaScript: "javascript",
-  Accessibility: "accessibility",
+  JAVASCRIPT: "javascript",
+  ACCESSIBILITY: "accessibility",
 };
 
+
 function updateCategoryImage(category) {
+  console.log(category);
   const imgElement = document.querySelector(".img-category");
   const imagePath = categoryImages[category];
   
   if (imagePath) {
     imgElement.innerHTML = `
       <img src="assets/images/${imagePath}.svg" />
-      <h2>${category}</h2>
+      <h2>${selectedCategory}</h2>
     `;
   } else {
     alert("Geçersiz image");
@@ -455,17 +457,16 @@ const submitAnswer = document.querySelector('.submit-answer')
 console.log("Tüm Sorular:", quizData.questions);
 categoryButtons.forEach((button) => {
   button.addEventListener('click', () => {
-    const category = button.textContent.trim();
-    console.log(`Seçilen kategori: ${category}`);
+    selectedCategory = button.textContent.trim();
+    console.log(`Seçilen kategori: ${selectedCategory}`);
 
-    const questions = quizData.questions.filter(q => q.category.toLowerCase() === category.toLowerCase()
+    const questions = quizData.questions.filter(q => q.category.toLowerCase() === selectedCategory.toLowerCase()
     );
     if (questions.length > 0) {
       loadQuestions(questions);
-      updateCategoryImage(category);
+      updateCategoryImage(selectedCategory);
       welcomeContainer.style.display = 'none';
       questionContainer.style.display = 'block';
-      submitAnswer.style.display = 'block';
     } else {
       alert('No questions found for this category!');
     }
@@ -478,11 +479,13 @@ function loadQuestions(questions) {
   showQuestion(questions);
   answerSection.addEventListener('click', (e) => {
     if (e.target.classList.contains('selectBtn')) { 
-      const selectedAnswer = e.target.innerText.trim();
+      const selectedOption = e.target.nextElementSibling.innerText;
+      console.log(selectedOption);
+      // const selectedAnswer = e.target.innerText.trim();
       const currentQuestion = questions[currentQuestionIndex];
       // console.log(selectedAnswer,currentQuestion.answer);
-      if (selectedAnswer === currentQuestion.answer) {
-       
+      if (selectedOption === currentQuestion.answer) {
+        console.log('Correct Answer');
         score++;
       }
       currentQuestionIndex++;
@@ -506,45 +509,42 @@ function showQuestion(questions) {
   questionScoreContent.innerHTML = `
   <p>Question ${currentQuestionIndex + 1} of 10</p>
   `
-  let optionsHtml = '';
   let index = 0;
-
-  for (const option of currentQuestion.options) {
-    optionsHtml += `
-    <div class="select-answer">
-      <button class="selectBtn"> ${['A', 'B', 'C', 'D'][index]}</button> ${option}
-    </div>
-      
-  `;
-  index++;
-  answerSection.innerHTML = optionsHtml + `
-  <button class="submit-answer">Submit Answer</button>`;
-  
+  for (let i = 0 ; i < currentQuestion.options.length ; i++) {
+    answerSection.innerHTML += `
+      <div class="select-answer">
+        <button class="selectBtn"> ${['A', 'B', 'C', 'D'][index]}</button>
+        <div class="option-container">
+        </div>
+      </div>
+    `;
+    index++;
+    
     const imgCategory = document.querySelector('.img-category');
     imgCategory.style.display ='flex';
   }
+  const optionContainers = document.querySelectorAll('.option-container');
+  for (let i = 0 ; i < optionContainers.length ; i++) {
+    optionContainers[i].textContent = currentQuestion.options[i];
+  }
+  answerSection.innerHTML += `<button class="submit-answer">Submit Answer</button>`;
 }
-
-
-
 
 function showScore() {
   const imgElement = document.querySelector(".img-category");
-  const imagePath = categoryImages[category];
+  const resultScreen = document.querySelector('.result-screen');
+  const imagePath = categoryImages[selectedCategory];
 
   questionContainer.style.display = 'none';
   scoreContainer.style.display = 'block';
-  imgElement.style.display = 'flex';
-
-  // updateCategoryImage(category);
-
-  imgElement.innerHTML = `
-    <div class="img-category">
+  // imgElement.style.display = 'flex';
+  resultScreen.innerHTML = `  
+    <div style="display:flex; justify-content:center; align-items:center; gap:16px; margin-bottom:16px;">
       <img src="assets/images/${imagePath}.svg"/>
-      <p>${category}</p>
+      <p>${selectedCategory}</p>
     </div>
     <h1>${score}</h1>
     <p>out of 10</p>
-  `;
+    `;
 }
 

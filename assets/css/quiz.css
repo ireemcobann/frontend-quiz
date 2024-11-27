@@ -313,6 +313,8 @@ input:checked + .slider:before {
   gap: 12px;
 }
 .select-section {
+  cursor: pointer;
+  border: none;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -490,3 +492,6 @@ input:checked + .slider:before {
 .container-questions, .container-score {
     display: none;
   }
+
+
+  
