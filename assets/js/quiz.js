@@ -531,7 +531,6 @@ function showQuestion(questions) {
 }
 
 function showScore() {
-  const imgElement = document.querySelector(".img-category");
   const resultScreen = document.querySelector('.result-screen');
   const imagePath = categoryImages[selectedCategory];
 
