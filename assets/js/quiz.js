@@ -434,7 +434,7 @@ const categoryImages = {
   HTML: "html",
   CSS: "css",
   JAVASCRIPT: "javascript",
-  ACCESSIBILITY: "accessibility",
+  Accessibility: "accessibility",
 };
 
 
@@ -509,6 +509,7 @@ function showQuestion(questions) {
   questionScoreContent.innerHTML = `
   <p>Question ${currentQuestionIndex + 1} of 10</p>
   `
+  
   let index = 0;
   for (let i = 0 ; i < currentQuestion.options.length ; i++) {
     answerSection.innerHTML += `
@@ -519,6 +520,8 @@ function showQuestion(questions) {
       </div>
     `;
     index++;
+
+    
     
     const imgCategory = document.querySelector('.img-category');
     imgCategory.style.display ='flex';
@@ -546,4 +549,15 @@ function showScore() {
     <p>out of 10</p>
     `;
 }
+
+const playAgainBtn = document.querySelector('.play-again');
+playAgainBtn.addEventListener('click', restartGame);
+
+function restartGame() {
+  scoreContainer.style.display = 'none';
+  welcomeContainer.style.display ='block';
+}
+
+
+
 

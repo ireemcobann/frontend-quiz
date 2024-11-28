@@ -393,15 +393,13 @@ input:checked + .slider:before {
 }
 .selectBtn {
   background-color: #f4f6fa;
-  border: none;
+  border: inherit;
   padding: 11px 14px;
   border-radius: 6px;
   font-size: 18px;
   font-weight: 600;
   line-height: 18px;
   text-align: center;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
   color: #626c7f;
 }
 .submit-answer {
@@ -494,7 +492,14 @@ input:checked + .slider:before {
 .container-questions, .container-score {
     display: none;
   }
-
+  
+.selectBtn:hover {
+    border-color: #a729f5;
+    background-color: #a729f5;
+    cursor: pointer;
+    color: white;
+  }
+  
 
 @media (width > 767px) {
     .container {
